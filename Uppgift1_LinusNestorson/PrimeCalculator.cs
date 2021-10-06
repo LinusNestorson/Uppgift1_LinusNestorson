@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal class Program
+    internal class PrimeCalculator
     {
         private static void Main(string[] args)
         {
