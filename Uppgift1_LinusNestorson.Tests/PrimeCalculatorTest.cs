@@ -6,22 +6,34 @@ namespace Uppgift1_LinusNestorson.Tests
     public class Tests
     {
         [Test]
-        [TestCase(7)]
-        [TestCase(8)]
         [TestCase(5)]
-        [TestCase(433)]
-        [TestCase(466)]
-        [TestCase(467)]
-        [TestCase(289)]
-        [TestCase(919)]
-        [TestCase(15269)]
-        [TestCase(106366)]
-        [TestCase(106367)]
-        public void PrimeCalculator(int numberTest)
+        [TestCase(7)]
+        [TestCase(19)]
+        [TestCase(71)]
+        [TestCase(139)]
+        [TestCase(911)]
+        [TestCase(7919)]
+        [TestCase(103583)]
+        public void PrimeCalculatorCorrect(int numberTest)
         {
             var prime = new PrimeCalculator();
             var result = prime.PrimeCalc(numberTest);
             Assert.IsTrue(result);
+        }
+
+        [TestCase(6)]
+        [TestCase(20)]
+        [TestCase(138)]
+        [TestCase(289)]
+        [TestCase(913)]
+        [TestCase(6919)]
+        [TestCase(102534)]
+        [Test]
+        public void PrimeCalculatorFalse(int numberTest)
+        {
+            var prime = new PrimeCalculator();
+            var result = prime.PrimeCalc(numberTest);
+            Assert.IsFalse(result);
         }
     }
 }

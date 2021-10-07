@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using Uppgift1_LinusNestorson.Helpers;
 
     public class PrimeCalculator
     {
@@ -13,9 +14,7 @@
                 return false;
             }
 
-            int[] numbersBelow = new int[number];
-
-            for (int i = 3; i < numbersBelow.Length - 1; i++)
+            for (int i = 2; i < number - 1; i++)
             {
                 if (number % i == 0)
                 {
@@ -23,6 +22,7 @@
                 }
             }
 
+            PrimeHelper.primeList.Add(number);
             return true;
         }
     }
