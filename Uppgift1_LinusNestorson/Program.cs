@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
     using Uppgift1_LinusNestorson.Helpers;
 
     internal class Program
@@ -45,10 +46,10 @@
 
         private static void CheckIfPrime()
         {
-            var calculator = new PrimeCalculator();
+            var primeCalc = new PrimeCalculator();
             Console.WriteLine("Please enter number you want to check: ");
             var numberChoice = Convert.ToInt32(Console.ReadLine());
-            var result = calculator.PrimeCalc(numberChoice);
+            var result = primeCalc.PrimeCalc(numberChoice);
             if (result)
             {
                 Console.WriteLine("The number is a prime and is added to the list of primes\n");
@@ -58,6 +59,9 @@
 
         private static void AddNextPrime()
         {
+            var nextPrimeCalc = new PrimeCalculator();
+            var nextPrime = nextPrimeCalc.NextPrime();
+            Console.WriteLine($"Next prime was {nextPrime} and was added to the list");
         }
 
         private static void SeeListOfPrimes()

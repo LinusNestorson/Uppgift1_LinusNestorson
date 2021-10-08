@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
     using Uppgift1_LinusNestorson.Helpers;
 
     public class PrimeCalculator
@@ -24,6 +25,20 @@
 
             PrimeHelper.primeList.Add(number);
             return true;
+        }
+
+        public int NextPrime()
+        {
+            var currentHighestPrime = PrimeHelper.primeList.Max();
+            for (int i = currentHighestPrime + 1; i < currentHighestPrime + 100; i++)
+            {
+                bool nextNum = PrimeCalc(i);
+                if (nextNum)
+                {
+                    return i;
+                }
+            }
+            return 0;
         }
     }
 }
