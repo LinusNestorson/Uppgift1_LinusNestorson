@@ -13,33 +13,41 @@
             Console.WriteLine("Welcome to the prime generator!\n");
             while (true)
             {
-                Console.WriteLine("Choose one of options below:");
-                Console.WriteLine("1. Check prime \n2. See list of added primes \n3. Add next prime to the list based on current higest number och primes \n4. Exit program");
-                int menuChoice = Convert.ToInt32(Console.ReadLine());
-                switch (menuChoice)
+                try
                 {
-                    case 1:
-                        Console.Clear();
-                        CheckIfPrime();
-                        break;
+                    Console.WriteLine("Choose one of options below:");
+                    Console.WriteLine("1. Check prime \n2. See list of added primes \n3. Add next prime to the list based on current higest number och primes \n4. Exit program");
+                    int menuChoice = Convert.ToInt32(Console.ReadLine());
+                    switch (menuChoice)
+                    {
+                        case 1:
+                            Console.Clear();
+                            CheckIfPrime();
+                            break;
 
-                    case 2:
-                        Console.Clear();
-                        SeeListOfPrimes();
-                        break;
+                        case 2:
+                            Console.Clear();
+                            SeeListOfPrimes();
+                            break;
 
-                    case 3:
-                        Console.Clear();
-                        AddNextPrime();
-                        break;
+                        case 3:
+                            Console.Clear();
+                            AddNextPrime();
+                            break;
 
-                    case 4:
-                        return;
+                        case 4:
+                            return;
 
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Wrong input. Try again\n");
-                        break;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("Invalid option. Try again with one of the numbers in the menu\n");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("\nSomething went wrong, please try again.");
+                    Console.WriteLine($"Error message: {ex.Message}\n");
                 }
             }
         }
