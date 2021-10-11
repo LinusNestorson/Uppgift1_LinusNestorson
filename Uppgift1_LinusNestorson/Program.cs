@@ -6,23 +6,40 @@
     using System.Linq;
     using Uppgift1_LinusNestorson.Helpers;
 
-    internal class Program
+    /// <summary>
+    /// Program class.
+    /// </summary>
+    internal static class Program
     {
+        /// <summary>
+        /// Entry point for program.
+        /// </summary>
+        /// <param name="args"></param>
         private static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the prime generator!\n");
+            Menu();
+        }
+
+        /// <summary>
+        /// Menu for user.
+        /// </summary>
+        private static void Menu()
+        {
+            Console.WriteLine("Welcome to the prime generator!");
             while (true)
             {
                 try
                 {
-                    Console.WriteLine("Choose one of options below:");
-                    Console.WriteLine("1. Check prime \n2. See list of added primes \n3. Add next prime to the list based on current higest number och primes \n4. Exit program");
+                    Console.WriteLine("\nChoose one of options below:");
+                    Console.WriteLine("1. Check prime \n2. See list of added primes \n3. Add next prime to the list based on current higest number och primes \n4. Exit program\n");
+                    Console.Write("> ");
                     int menuChoice = Convert.ToInt32(Console.ReadLine());
+
                     switch (menuChoice)
                     {
                         case 1:
                             Console.Clear();
-                            CheckIfPrime();
+                            ValidationCheck();
                             break;
 
                         case 2:
@@ -40,45 +57,100 @@
 
                         default:
                             Console.Clear();
-                            Console.WriteLine("Invalid option. Try again with one of the numbers in the menu\n");
+                            Console.WriteLine("Invalid input. Try again with one of the numbers in the menu\n");
                             break;
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("\nSomething went wrong, please try again.");
-                    Console.WriteLine($"Error message: {ex.Message}\n");
+                    Console.WriteLine($"\nSomething went wrong with following error: {ex.Message}\n");
                 }
             }
         }
 
-        private static void CheckIfPrime()
+        /// <summary>
+        /// Method for validatiing input from user.
+        /// </summary>
+        /// <param name="choice">Input from user.</param>
+        /// <returns>True or false</returns>
+        private static bool InputValueCheck(int choice)
+        {
+            if (choice <= 0)
+            {
+                Console.WriteLine("\nThe value have to be positive");
+                return false;
+            }
+            else if (choice > int.MaxValue)
+            {
+                Console.WriteLine("The number is too high, try something lower");
+                return false;
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// Pass on input to prime number check if valid.
+        /// </summary>
+        private static void ValidationCheck()
+        {
+            Console.WriteLine("Please enter number you want to check: ");
+            Console.Write("> ");
+            var numberChoice = Convert.ToInt32(Console.ReadLine());
+            var valueCheck = InputValueCheck(numberChoice);
+            if (valueCheck)
+            {
+                PrimeCheck(numberChoice);
+            }
+            else
+            {
+                Console.WriteLine("Invalid input\n");
+            }
+        }
+
+        /// <summary>
+        /// Send valid input from user to prime calculator method.
+        /// </summary>
+        /// <param name="numberChoice">Valid input from user</param>
+        private static void PrimeCheck(int numberChoice)
         {
             var primeCalc = new PrimeCalculator();
-            Console.WriteLine("Please enter number you want to check: ");
-            var numberChoice = Convert.ToInt32(Console.ReadLine());
+
             var result = primeCalc.PrimeCalc(numberChoice);
+
             if (result)
             {
-                Console.WriteLine("The number is a prime and is added to the list of primes\n");
+                Console.WriteLine($"\nNumber {numberChoice} is a prime and added to the list of primes.");
             }
             else Console.WriteLine("The number is not a prime\n");
         }
 
+        /// <summary>
+        /// Print message with the number added based on highest number in list.
+        /// </summary>
         private static void AddNextPrime()
         {
             var nextPrimeCalc = new PrimeCalculator();
             var nextPrime = nextPrimeCalc.NextPrime();
-            Console.WriteLine($"Next prime was {nextPrime} and was added to the list");
+            Console.WriteLine($"Next prime was {nextPrime} and was added to the list\n");
         }
 
+        /// <summary>
+        /// Display list of all logged prime numbers
+        /// </summary>
         private static void SeeListOfPrimes()
         {
-            Console.WriteLine("These are your logged primes\n");
+            Console.WriteLine("These are your logged primes:");
 
-            foreach (var primes in PrimeHelper.primeList)
+            if (PrimeHelper.primeList.Count > 0)
             {
-                Console.WriteLine(primes);
+                foreach (var primes in PrimeHelper.primeList)
+                {
+                    Console.WriteLine($"{primes}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNo logged primes");
             }
         }
     }

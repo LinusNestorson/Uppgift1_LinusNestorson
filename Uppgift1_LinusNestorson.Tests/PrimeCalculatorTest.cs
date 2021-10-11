@@ -5,6 +5,7 @@ namespace Uppgift1_LinusNestorson.Tests
     [TestFixture]
     public class Tests
     {
+        //Testing if prime calculator handles prime numbers correct.
         [Test]
         [TestCase(5)]
         [TestCase(7)]
@@ -21,6 +22,8 @@ namespace Uppgift1_LinusNestorson.Tests
             Assert.IsTrue(result);
         }
 
+        //Testing if prime calculator handles non-prime numbers correct.
+        [Test]
         [TestCase(6)]
         [TestCase(20)]
         [TestCase(138)]
@@ -28,7 +31,6 @@ namespace Uppgift1_LinusNestorson.Tests
         [TestCase(913)]
         [TestCase(6919)]
         [TestCase(102534)]
-        [Test]
         public void PrimeCalculatorFalse(int numberTest)
         {
             var prime = new PrimeCalculator();

@@ -8,6 +8,11 @@
 
     public class PrimeCalculator
     {
+        /// <summary>
+        /// Calculates if number given by user is a prime number.
+        /// </summary>
+        /// <param name="number">Number input from user</param>
+        /// <returns></returns>
         public bool PrimeCalc(int number)
         {
             if (number < 2)
@@ -27,18 +32,30 @@
             return true;
         }
 
+        /// <summary>
+        /// Calculates the next prime number based on current highest number in list of primes.
+        /// </summary>
+        /// <returns>Number added to list</returns>
         public int NextPrime()
         {
-            var currentHighestPrime = PrimeHelper.primeList.Max();
-            for (int i = currentHighestPrime + 1; i < currentHighestPrime + 100; i++)
+            if (PrimeHelper.primeList.Any())
             {
-                bool nextNum = PrimeCalc(i);
-                if (nextNum)
+                var currentHighestPrime = PrimeHelper.primeList.Max();
+                for (int i = currentHighestPrime + 1; i < currentHighestPrime + 100; i++)
                 {
-                    return i;
+                    bool nextNum = PrimeCalc(i);
+                    if (nextNum)
+                    {
+                        return i;
+                    }
                 }
+                return default;
             }
-            return 0;
+            else
+            {
+                PrimeHelper.primeList.Add(2);
+                return 2;
+            }
         }
     }
 }
