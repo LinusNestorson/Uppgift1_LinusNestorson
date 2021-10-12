@@ -77,7 +77,7 @@
         {
             if (choice <= 0)
             {
-                Console.WriteLine("\nThe value have to be positive");
+                Console.WriteLine("\nThe value have to be above zero");
                 return false;
             }
             else if (choice > int.MaxValue)

@@ -41,7 +41,7 @@
             if (PrimeHelper.primeList.Any())
             {
                 var currentHighestPrime = PrimeHelper.primeList.Max();
-                for (int i = currentHighestPrime + 1; i < currentHighestPrime + 100; i++)
+                for (int i = currentHighestPrime + 1; i < currentHighestPrime + 1000; i++)
                 {
                     bool nextNum = PrimeCalc(i);
                     if (nextNum)
