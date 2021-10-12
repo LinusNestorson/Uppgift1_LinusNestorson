@@ -1,9 +1,6 @@
 ﻿namespace Uppgift1_LinusNestorson
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Linq;
     using Uppgift1_LinusNestorson.Helpers;
 
     /// <summary>
@@ -139,7 +136,7 @@
         /// </summary>
         private static void SeeListOfPrimes()
         {
-            Console.WriteLine("These are your logged primes:");
+            Console.WriteLine("These are your logged primes:\n");
 
             if (PrimeHelper.primeList.Count > 0)
             {

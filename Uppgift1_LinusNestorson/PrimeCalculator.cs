@@ -1,8 +1,5 @@
 ﻿namespace Uppgift1_LinusNestorson
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Linq;
     using Uppgift1_LinusNestorson.Helpers;
 
@@ -12,7 +9,7 @@
         /// Calculates if number given by user is a prime number.
         /// </summary>
         /// <param name="number">Number input from user</param>
-        /// <returns></returns>
+        /// <returns>True or false based on outcome</returns>
         public bool PrimeCalc(int number)
         {
             if (number < 2)

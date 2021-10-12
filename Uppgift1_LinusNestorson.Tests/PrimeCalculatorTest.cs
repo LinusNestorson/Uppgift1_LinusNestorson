@@ -1,6 +1,7 @@
 namespace Uppgift1_LinusNestorson.Tests
 {
     using NUnit.Framework;
+    using Uppgift1_LinusNestorson.Helpers;
 
     [TestFixture]
     public class Tests
@@ -36,6 +37,30 @@ namespace Uppgift1_LinusNestorson.Tests
             var prime = new PrimeCalculator();
             var result = prime.PrimeCalc(numberTest);
             Assert.IsFalse(result);
+        }
+
+        //Testing functionality of next prime calculation with numbers in list.
+        [Test]
+        [TestCase(5, 11)]
+        public void NextPrimeWithNum(int num1, int num2)
+        {
+            var prime = new PrimeCalculator();
+            int expected = 13;
+            PrimeHelper.primeList.Add(num1);
+            PrimeHelper.primeList.Add(num2);
+            var result = prime.NextPrime();
+            Assert.AreEqual(result, expected);
+        }
+
+        //Testing functionality of next prime calculation without numbers in list.
+        [Test]
+        [TestCase(2)]
+        public void NextPrimeEmpty(int num1)
+        {
+            var prime = new PrimeCalculator();
+            int expected = num1;
+            var result = prime.NextPrime();
+            Assert.AreEqual(result, expected);
         }
     }
 }
